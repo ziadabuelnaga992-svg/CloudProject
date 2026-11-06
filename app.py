@@ -3,7 +3,7 @@ import pandas as pd
 from fitness_chatbot import FitnessChatbot
 
 st.set_page_config(
-    page_title="Fitness AI Chatbot | NLP Project",
+    page_title="Fitness AI Chatbot",
     page_icon="🏋️‍♂️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -69,7 +69,7 @@ if "messages" not in st.session_state:
     st.session_state.messages = [
         {
             "role": "assistant",
-            "content": "👋 Hello! I am your **Fitness & Workout AI Assistant** (NLP Project).\n\nAsk me anything about exercises, workouts, building muscle, nutrition, or weight loss!",
+            "content": "👋 Hello! I am your **Fitness & Workout AI Assistant**.\n\nAsk me anything about exercises, workouts, building muscle, nutrition, or weight loss!",
             "details": None
         }
     ]
@@ -79,8 +79,8 @@ if "last_query_result" not in st.session_state:
 
 with st.sidebar:
     st.image("https://img.icons8.com/fluency/96/dumbbell.png", width=70)
-    st.title("Fitness NLP Bot")
-    st.caption("College NLP Course Project")
+    st.title("Fitness Bot")
+    st.caption("College  Course Project")
     
     st.markdown("---")
     st.subheader("⚙️ إعدادات النموذج (Model Parameters)")
@@ -110,12 +110,11 @@ with st.sidebar:
         if st.button(q, key=f"quick_{q}"):
             st.session_state.quick_query = q
 
-st.markdown('<div class="main-header">🏋️‍♂️ Fitness & Nutrition NLP Chatbot</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-header">مشروع تطبيق الـ NLP: جلب بيانات (API) ➔ معالجة نصوص (Preprocessing) ➔ متجهات TF-IDF ➔ تطابق Cosine Similarity</div>', unsafe_allow_html=True)
+st.markdown('<div class="main-header">🏋️‍♂️ Fitness & Nutrition  Chatbot</div>', unsafe_allow_html=True)
 
 tab_chat, tab_inspector, tab_dataset = st.tabs([
     "💬 الشات بوت (Chat Interface)",
-    "🔬 فاحص خطوات الـ NLP (Pipeline Inspector)",
+    "🔬 فاحص خطوات الـ  (Pipeline Inspector)",
     "📚 قاعدة المعرفة (Knowledge Base)"
 ])
 
@@ -146,7 +145,7 @@ with tab_chat:
     if user_input:
         st.session_state.messages.append({"role": "user", "content": user_input, "details": None})
         
-        with st.spinner("Analyzing query via NLP pipeline..."):
+        with st.spinner("Analyzing query via pipeline..."):
             result = bot.predict(user_input, top_k=top_k)
             st.session_state.last_query_result = result
             
@@ -158,7 +157,7 @@ with tab_chat:
             st.rerun()
 
 with tab_inspector:
-    st.subheader("🔬 فحص وتتبع مراحل الـ NLP Pipeline لسؤال المستخدم")
+    st.subheader("🔬 فحص وتتبع مراحل الـ  Pipeline لسؤال المستخدم")
     last_res = st.session_state.last_query_result
 
     if not last_res or "pipeline_steps" not in last_res or not last_res["pipeline_steps"]:
